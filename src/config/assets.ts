@@ -4,31 +4,47 @@
  * Pengguna dapat dengan mudah mengganti jalur aset di sini tanpa merubah struktur komponen.
  */
 
+/**
+ * Helper fungsi untuk menyelesaikan URL aset publik dengan base path Vite (misal: '/hajj-explorer/').
+ * Bekerja mulus baik di lingkungan lokal ('/' atau '/hajj-explorer/') maupun di GitHub Pages.
+ */
+export const getAssetUrl = (path: string): string => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:') || path.startsWith('blob:')) {
+    return path;
+  }
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${cleanBase}${cleanPath}`;
+};
+
 export const stageAssets = {
-  ihram: "/assets/images/stages/ihram.png",
-  arafah: "/assets/images/stages/arafah.png",
-  tawaf: "/assets/images/stages/tawaf.png",
-  sai: "/assets/images/stages/sai.png",
-  tahallul: "/assets/images/stages/tahallul.png",
-  tertib: "/assets/images/stages/tertib.png",
+  ihram: getAssetUrl('assets/images/stages/ihram.png'),
+  arafah: getAssetUrl('assets/images/stages/arafah.png'),
+  tawaf: getAssetUrl('assets/images/stages/tawaf.png'),
+  sai: getAssetUrl('assets/images/stages/sai.png'),
+  tahallul: getAssetUrl('assets/images/stages/tahallul.png'),
+  tertib: getAssetUrl('assets/images/stages/tertib.png'),
 };
 
 export const locationAssets = {
-  kabah: "/assets/images/locations/kabah.jpg",
-  safa: "/assets/images/locations/safa.jpg",
-  arafah: "/assets/images/locations/arafah.jpg",
-  muzdalifah: "/assets/images/locations/muzdalifah.jpg",
-  mina: "/assets/images/locations/mina.jpg",
-  jamarat: "/assets/images/locations/jamarat.jpg",
+  kabah: getAssetUrl('assets/images/locations/kabah.jpg'),
+  safa: getAssetUrl('assets/images/locations/safa.jpg'),
+  arafah: getAssetUrl('assets/images/locations/arafah.jpg'),
+  muzdalifah: getAssetUrl('assets/images/locations/muzdalifah.jpg'),
+  mina: getAssetUrl('assets/images/locations/mina.jpg'),
+  jamarat: getAssetUrl('assets/images/locations/jamarat.jpg'),
 };
 
 export const mediaAssets = {
-  videoPembelajaran: "/assets/videos/video-pembelajaran.mp4",
-  videoThumbnail: "/assets/images/hero/video-poster.jpg",
-  assemblrMarker: "/assets/markers/assemblr-marker.png",
-  uiConcept: "/references/ui-concept.jpg",
-  kaabaIcon: "/assets/images/logo/kaaba-icon.svg",
-  logoText: "/assets/images/logo/logo-text.svg"
+  videoPembelajaran: getAssetUrl('assets/videos/video-pembelajaran.mp4'),
+  videoThumbnail: getAssetUrl('assets/images/hero/video-poster.jpg'),
+  assemblrMarker: getAssetUrl('assets/markers/assemblr-marker.png'),
+  uiConcept: getAssetUrl('references/ui-concept.jpg'),
+  kaabaIcon: getAssetUrl('assets/images/logo/kaaba-icon.svg'),
+  logoText: getAssetUrl('assets/images/logo/logo-text.svg'),
+  heroKaabaBg: getAssetUrl('assets/images/hero-kaaba-bg.jpg')
 };
 
 /**

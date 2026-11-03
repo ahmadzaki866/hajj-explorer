@@ -10,6 +10,7 @@ import { MapPage } from './pages/MapPage';
 import { QuizPage } from './pages/QuizPage';
 import { GuidePage } from './pages/GuidePage';
 import { AboutPage } from './pages/AboutPage';
+import { mediaAssets } from './config/assets';
 
 // Scroll to top helper component
 const ScrollToTop: React.FC = () => {
@@ -49,7 +50,7 @@ export const App: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center space-x-3">
               <div className="w-7 h-7 rounded-lg bg-hajj-primary p-1 flex items-center justify-center">
-                <img src="/assets/images/logo/kaaba-icon.svg" alt="Hajj Explorer" className="w-full h-full" />
+                <img src={mediaAssets.kaabaIcon} alt="Hajj Explorer" className="w-full h-full" />
               </div>
               <span className="font-bold text-hajj-navy">HAJJ EXPLORER</span>
               <span>— Platform Pembelajaran Ibadah Haji Berbasis Augmented Reality</span>

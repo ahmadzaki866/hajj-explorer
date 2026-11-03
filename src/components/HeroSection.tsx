@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight, BookOpen, Compass, Award, Play } from 'lucide-react';
+import { mediaAssets } from '../config/assets';
 
 export const HeroSection: React.FC<{ onScrollToVideo?: () => void }> = ({ onScrollToVideo }) => {
   return (
@@ -13,7 +14,7 @@ export const HeroSection: React.FC<{ onScrollToVideo?: () => void }> = ({ onScro
           {/* Background Ka'bah Image with Parallax / Cover */}
           <div 
             className="absolute inset-0 bg-cover bg-center md:bg-right scale-105 transition-transform duration-700 pointer-events-none"
-            style={{ backgroundImage: `url('/assets/images/hero-kaaba-bg.jpg')` }}
+            style={{ backgroundImage: `url('${mediaAssets.heroKaabaBg}')` }}
           />
 
           {/* Deep Navy/Islamic Blue Gradient Overlay for High Contrast & Text Legibility */}
@@ -88,7 +89,7 @@ export const HeroSection: React.FC<{ onScrollToVideo?: () => void }> = ({ onScro
                 <div className="w-full max-w-xs rounded-2xl bg-white/10 backdrop-blur-md p-4 border border-white/20 shadow-2xl text-center space-y-3">
                   <div className="aspect-square rounded-xl bg-gradient-to-b from-[#123B56]/80 to-[#10344D]/90 p-4 flex flex-col items-center justify-center relative overflow-hidden group">
                     <img
-                      src="/assets/images/logo/kaaba-icon.svg"
+                      src={mediaAssets.kaabaIcon}
                       alt="Ka'bah 3D"
                       className="w-28 h-28 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-110 animate-float-slow"
                     />

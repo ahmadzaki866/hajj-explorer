@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Sparkles, Menu, X, Camera } from 'lucide-react';
+import { mediaAssets } from '../config/assets';
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
@@ -30,7 +31,7 @@ export const Navbar: React.FC = () => {
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-hajj-primary to-hajj-secondary p-0.5 shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center">
               <img 
-                src="/assets/images/logo/kaaba-icon.svg" 
+                src={mediaAssets.kaabaIcon} 
                 alt="Hajj Explorer" 
                 className="w-full h-full rounded-[10px] object-cover"
               />

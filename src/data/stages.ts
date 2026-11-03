@@ -1,4 +1,4 @@
-import { stageAssets } from '../config/assets';
+import { stageAssets, getAssetUrl } from '../config/assets';
 
 export interface StageData {
   id: string;
@@ -51,7 +51,7 @@ export const STAGES_DATA: StageData[] = [
     arabicText: "لَبَّيْكَ اللَّهُمَّ حَجًّا",
     latinText: "Labbaikallaahumma hajjan.",
     translation: "Aku penuhi panggilan-Mu ya Allah untuk berhaji.",
-    audioUrl: "/assets/audio/rukun-1-ihram.mp3",
+    audioUrl: getAssetUrl("assets/audio/rukun-1-ihram.mp3"),
     image: stageAssets.ihram,
     sceneIndex: 0,
     reflection: "Menanggalkan kemewahan duniawi, melatih kesederhanaan, dan menyadari bahwa di hadapan Allah semua manusia setara."
@@ -79,7 +79,7 @@ export const STAGES_DATA: StageData[] = [
     arabicText: "لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
     latinText: "Laa ilaaha illallaahu wahdahu laa syariika lah, lahul mulku wa lahul hamdu, wa huwa 'alaa kulli syai-in qadiir.",
     translation: "Tidak ada Tuhan selain Allah, Yang Maha Esa, tiada sekutu bagi-Nya. Bagi-Nya kerajaan dan segala puji, dan Dia Maha Kuasa atas segala sesuatu.",
-    audioUrl: "/assets/audio/rukun-2-arafah.mp3",
+    audioUrl: getAssetUrl("assets/audio/rukun-2-arafah.mp3"),
     image: stageAssets.arafah,
     sceneIndex: 1,
     reflection: "Puncak kerendahan hati manusia, memohon ampunan tulus atas segala kekhilafan, dan memperbarui tekad menjadi pribadi yang lebih bertakwa."
@@ -109,7 +109,7 @@ export const STAGES_DATA: StageData[] = [
     arabicText: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
     latinText: "Rabbanaa aatinaa fid-dunyaa hasanatan wa fil aakhirati hasanatan wa qinaa 'adzaaban-naar.",
     translation: "Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari siksa api neraka.",
-    audioUrl: "/assets/audio/rukun-3-thawaf.mp3",
+    audioUrl: getAssetUrl("assets/audio/rukun-3-thawaf.mp3"),
     image: stageAssets.tawaf,
     sceneIndex: 2,
     reflection: "Menjadikan ketaatan kepada Allah sebagai orbit utama dalam seluruh aspek kehidupan, menjauhkan diri dari ego sentrisme."
@@ -139,7 +139,7 @@ export const STAGES_DATA: StageData[] = [
     arabicText: "إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ ۖ أَبْدَأُ بِمَا بَدَأَ اللَّهُ بِهِ",
     latinText: "Innash-shafaa wal marwata min sya'aa-irillaah. Abda-u bimaa bada-allaahu bih.",
     translation: "Sesungguhnya Safa dan Marwah adalah sebagian dari syiar-syiar Allah. Aku memulai dengan apa yang dimulai oleh Allah.",
-    audioUrl: "/assets/audio/rukun-4-sai.mp3",
+    audioUrl: getAssetUrl("assets/audio/rukun-4-sai.mp3"),
     image: stageAssets.sai,
     sceneIndex: 3,
     reflection: "Pengingat bahwa dalam hidup kita wajib berikhtiar tanpa putus asa, dan Allah adalah sumber solusi dari arah yang tak disangka-sangka."
@@ -167,7 +167,7 @@ export const STAGES_DATA: StageData[] = [
     arabicText: "اللَّهُمَّ اغْفِرْ لِلْمُحَلِّقِينَ، اللَّهُمَّ اغْفِرْ لِلْمُحَلِّقِينَ، اللَّهُمَّ اغْفِرْ لِلْمُقَصِّرِينَ",
     latinText: "Allaahummaghfir lil-muhalliqiin, Allaahummaghfir lil-muhalliqiin, Allaahummaghfir lil-muqashshiriin.",
     translation: "Ya Allah, ampunilah mereka yang mencukur gundul rambutnya (2x), dan ampunilah mereka yang memendekkan rambutnya.",
-    audioUrl: "/assets/audio/rukun-5-tahallul.mp3",
+    audioUrl: getAssetUrl("assets/audio/rukun-5-tahallul.mp3"),
     image: stageAssets.tahallul,
     sceneIndex: 4,
     reflection: "Simbol pengorbanan dan peremajaan jiwa. Membuang keangkuhan dan memulai lembaran hidup baru dengan akhlak yang mulia."
@@ -195,7 +195,7 @@ export const STAGES_DATA: StageData[] = [
     arabicText: "خُذُوا عَنِّي مَنَاسِكَكُمْ، اللَّهُمَّ اجْعَلْهُ حَجًّا مَبْرُورًا وَسَعْيًا مَشْكُورًا وَذَنْبًا مَغْفُورًا",
     latinText: "Khudzuu 'annii manaasikakum. Allaahummaj'alhu hajjan mabruuraa wa sa'yan masjkuuraa wa dzanban maghfuuraa.",
     translation: "Ambillah dariku tata cara manasik haji kalian. Ya Allah, jadikanlah haji ini mabrur, sa'i yang disyukuri, dan dosa yang diampuni.",
-    audioUrl: "/assets/audio/rukun-6-tertib.mp3",
+    audioUrl: getAssetUrl("assets/audio/rukun-6-tertib.mp3"),
     image: stageAssets.tertib,
     sceneIndex: 5,
     reflection: "Kunci keberhasilan dan keberkahan adalah ketaatan, disiplin, dan menghormati proses rukun demi rukun dengan penuh keikhlasan."

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Info, BookOpen, User, GraduationCap, Calendar, ShieldCheck, Heart, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { mediaAssets } from '../config/assets';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ export const AboutPage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 sm:p-10 border border-hajj-border shadow-card text-center space-y-5">
         <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-hajj-primary to-hajj-secondary p-1 shadow-md mx-auto flex items-center justify-center">
           <img
-            src="/assets/images/logo/kaaba-icon.svg"
+            src={mediaAssets.kaabaIcon}
             alt="Hajj Explorer Logo"
             className="w-full h-full object-contain"
           />

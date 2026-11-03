@@ -12,12 +12,14 @@ export interface AssemblrScene {
   objects: string[];
 }
 
+import { getAssetUrl } from './assets';
+
 export const ASSEMBLR_CONFIG = {
   projectId: "-i2faHfog82cn3rXJP5g",
   projectUrl: "https://asblr.com/tuM8nge",
   embedUrl: "https://v2.editor.assemblrworld.com/Embed/-i2faHfog82cn3rXJP5g",
   eduViewerUrl: "https://viewer-edu.assemblrworld.com/Embed/-i2faHfog82cn3rXJP5g",
-  markerAsset: "/assets/markers/assemblr-marker.png",
+  markerAsset: getAssetUrl("assets/markers/assemblr-marker.png"),
   validDomains: [
     "asblr.com",
     "asblr.link",
