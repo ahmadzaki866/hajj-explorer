@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
   BookOpen, Sparkles, Camera, MapPin, Award, 
-  ShieldCheck, HelpCircle, ArrowRight, CheckCircle2 
+  ShieldCheck, HelpCircle, ArrowRight, CheckCircle2,
+  GraduationCap, Building2, UserCheck, HeartHandshake
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -27,22 +28,22 @@ export const GuidePage: React.FC = () => {
       color: "from-amber-400 to-hajj-gold",
       steps: [
         "Buka menu 'Ruang AR' dari beranda atau halaman materi.",
-        "Gunakan pemilih rukun untuk berganti antar scene 3D (Rukun 1 s.d Rukun 6).",
+        "Gunakan pemilih rukun untuk mempelajari rukun 1 s.d 6 beserta objek 3D pendukungnya.",
         "Gunakan jari atau mouse untuk memutar (orbit), menggeser, dan memperbesar model 3D di viewer Assemblr.",
-        "Tekan tombol 'Buka AR di Browser' untuk meluncurkan mode Web AR Assemblr di ponselmu tanpa perlu mengunduh aplikasi tambahan."
+        "Tekan tombol 'Buka WebAR Assemblr' untuk meluncurkan mode WebAR resmi di ponselmu tanpa perlu mengunduh aplikasi tambahan."
       ]
     },
     {
       num: 3,
-      title: "Cara Memindai QR Marker Menggunakan Kamera",
+      title: "Cara Menggunakan WebAR Assemblr (Scan Marker)",
       icon: Camera,
       color: "from-emerald-500 to-teal-700",
       steps: [
-        "Siapkan gambar marker fisik (tersedia di tab 'Lihat Marker AR' untuk diunduh atau ditampilkan di layar lain).",
-        "Klik tombol utama 'Aktifkan Kamera & Pindai Marker AR' pada halaman Ruang AR.",
-        "Beri izin akses kamera saat peramban (browser) memintanya. Kamera belakang smartphone akan diprioritaskan otomatis.",
-        "Arahkan kotak pembidik kamera ke QR Code marker hingga status berubah menjadi 'Marker Ditemukan'.",
-        "Klik tombol konfirmasi untuk langsung membuka scene AR di browser."
+        "Buka tautan proyek Assemblr melalui tombol 'Mulai Pengalaman WebAR Assemblr' di Ruang AR.",
+        "Pada halaman Assemblr WebAR, pilih mode 'Scan Marker' (atau 'View in 3D' jika ingin melihat tanpa marker).",
+        "Izinkan akses kamera saat peramban smartphone memintanya.",
+        "Arahkan kamera ponsel ke gambar QR marker Assemblr pada kertas cetak atau layar perangkat lain.",
+        "Tunggu hingga objek 3D muncul melayang di atas marker. Kamu juga dapat menggunakan fitur Pemindai QR Layar Penuh di website untuk memindai tautan proyek."
       ]
     },
     {
@@ -138,6 +139,82 @@ export const GuidePage: React.FC = () => {
           );
         })}
       </div>
+
+      {/* Section: Tentang Website & Profil Pengembang */}
+      <section className="bg-white rounded-3xl p-6 sm:p-8 border border-hajj-border shadow-soft space-y-6">
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-hajj-primary to-hajj-navy text-white flex items-center justify-center shadow-md shrink-0">
+            <GraduationCap className="w-6 h-6 text-hajj-gold" />
+          </div>
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[11px] font-bold border border-amber-200">
+              <Sparkles className="w-3 h-3 text-hajj-gold" />
+              <span>Tentang & Data Pengembang</span>
+            </div>
+            <h2 className="text-lg sm:text-xl font-extrabold text-hajj-navy tracking-tight mt-0.5">
+              Tentang Website & Pengembang Media
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          {/* Kartu Profil Pengembang */}
+          <div className="md:col-span-5 p-5 rounded-2xl bg-gradient-to-b from-slate-50 to-hajj-light/50 border border-hajj-border flex flex-col items-center text-center space-y-3 shadow-inner">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-hajj-primary via-hajj-secondary to-hajj-navy text-white flex items-center justify-center shadow-lg border-2 border-white ring-4 ring-amber-100 shrink-0">
+              <span className="font-black text-2xl tracking-wider text-hajj-gold">ZK</span>
+            </div>
+
+            <div className="space-y-0.5">
+              <h3 className="text-base font-extrabold text-hajj-navy">
+                Kun Zakia Khoirotun Nisa
+              </h3>
+              <p className="text-xs font-bold text-hajj-primary font-mono">
+                NIM: 243111076
+              </p>
+            </div>
+
+            <div className="w-full pt-3 border-t border-slate-200/80 space-y-2 text-xs text-slate-700 text-left">
+              <div className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-hajj-primary shrink-0" />
+                <span className="font-medium">Pendidikan Agama Islam</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Building2 className="w-4 h-4 text-hajj-primary shrink-0" />
+                <span className="font-medium">Fakultas Ilmu Tarbiyah</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <GraduationCap className="w-4 h-4 text-hajj-gold shrink-0" />
+                <span className="font-bold text-hajj-navy">UIN Raden Mas Said Surakarta</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Deskripsi & Konteks Pembuatan Media Pembelajaran */}
+          <div className="md:col-span-7 space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <div className="space-y-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-hajj-primary">
+                Inovasi Media Pembelajaran PAI
+              </span>
+              <h3 className="text-sm sm:text-base font-bold text-hajj-navy">
+                Hajj Explorer: Pembelajaran Manasik Haji WebAR & 3D
+              </h3>
+            </div>
+            <p className="text-slate-600 leading-relaxed">
+              Website <strong>Hajj Explorer</strong> dirancang dan dikembangkan sebagai media inovasi pembelajaran digital pada mata pelajaran <em>Pendidikan Agama Islam (PAI)</em>, khususnya materi rukun dan manasik ibadah haji.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              Dengan mengintegrasikan teknologi <strong>Web Augmented Reality (WebAR)</strong> berbasis marker Assemblr dan visualisasi peta 3D interaktif, media ini bertujuan menghadirkan pengalaman belajar yang imersif, kontekstual, serta memudahkan peserta didik memahami urutan rukun haji secara konkret.
+            </p>
+
+            <div className="p-3 rounded-xl bg-amber-50/80 border border-amber-200/60 text-xs text-amber-950 flex items-start gap-2.5">
+              <HeartHandshake className="w-4 h-4 text-hajj-gold shrink-0 mt-0.5" />
+              <p className="leading-relaxed">
+                Dikembangkan di lingkungan akademik <strong>Fakultas Ilmu Tarbiyah, UIN Raden Mas Said Surakarta</strong> untuk mendukung pembelajaran PAI berbasis teknologi modern.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Action Button */}
       <div className="pt-4 flex justify-center">

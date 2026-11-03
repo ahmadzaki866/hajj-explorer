@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { 
   Sparkles, Camera, ExternalLink, ArrowLeft, Download, 
-  ChevronDown, ChevronUp, Check, Layers, Box, Eye
+  ChevronDown, ChevronUp, Check, Layers, Box, QrCode, CheckCircle2, Info
 } from 'lucide-react';
 import { ASSEMBLR_CONFIG, AssemblrScene } from '../config/assemblr';
 import { mediaAssets } from '../config/assets';
@@ -15,7 +15,7 @@ export const ARPage: React.FC = () => {
   const [isScannerOpen, setIsScannerOpen] = useState(false);
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 
-  // Read initial scene index from query param ?scene=0..5
+  // Baca indeks scene awal dari query param ?scene=0..5
   const sceneParam = searchParams.get('scene');
   const initialIndex = sceneParam !== null && !isNaN(Number(sceneParam))
     ? Math.max(0, Math.min(ASSEMBLR_CONFIG.scenes.length - 1, Number(sceneParam)))
@@ -39,18 +39,18 @@ export const ARPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8 space-y-5 sm:space-y-6 pb-24">
       
-      {/* Page Header */}
+      {/* 1. Page Header */}
       <div className="flex items-center justify-between gap-3">
         <div>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[11px] font-bold border border-amber-200 mb-1">
             <Sparkles className="w-3 h-3 text-hajj-gold" />
-            <span>Assemblr EDU WebAR</span>
+            <span>Assemblr WebAR & 3D Viewer</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-extrabold text-hajj-navy tracking-tight">
-            Augmented Reality Experience
+            Ruang Augmented Reality (WebAR)
           </h1>
           <p className="text-xs text-slate-500 mt-0.5 max-w-xl hidden sm:block">
-            Jelajahi visualisasi 3D ibadah haji langsung di mejamu melalui teknologi Web Augmented Reality.
+            Jelajahi visualisasi 3D ibadah haji secara interaktif dan rasakan pengalaman Augmented Reality berbasis marker melalui Assemblr WebAR.
           </p>
         </div>
 
@@ -63,41 +63,58 @@ export const ARPage: React.FC = () => {
         </Link>
       </div>
 
-      {/* HERO FEATURE: Tombol Aktifkan Kamera (Dibuat Sangat Menonjol dan Utama) */}
-      <div className="relative group">
-        <button
-          type="button"
-          onClick={() => setIsScannerOpen(true)}
-          className="w-full py-4 sm:py-5 px-6 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-hajj-primary via-hajj-secondary to-hajj-navy hover:from-hajj-navy hover:to-hajj-primary text-white shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-between gap-4 border border-white/20 active:scale-[0.98] animate-camera-glow cursor-pointer"
-        >
-          <div className="flex items-center gap-3.5 text-left">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/30 text-hajj-gold shadow-inner">
-              <Camera className="w-6 h-6 sm:w-7 sm:h-7" />
+      {/* 2. HERO FEATURE: Tombol Utama Mulai Pengalaman AR (Membuka WebAR Resmi Assemblr) */}
+      <div className="relative group rounded-3xl overflow-hidden bg-gradient-to-r from-hajj-primary via-hajj-secondary to-hajj-navy text-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 p-5 sm:p-7">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/30 text-hajj-gold shadow-inner">
+              <Camera className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
-            <div>
+            <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-black uppercase tracking-wider text-hajj-gold bg-black/30 px-2 py-0.5 rounded-md">
-                  Fitur Utama
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-hajj-gold bg-black/40 px-2.5 py-0.5 rounded-md border border-hajj-gold/30">
+                  Alur Resmi WebAR
                 </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping hidden sm:inline-block" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
-              <h2 className="text-base sm:text-xl font-extrabold text-white leading-tight mt-0.5">
-                Aktifkan Kamera & Pindai Marker AR
+              <h2 className="text-lg sm:text-2xl font-extrabold text-white leading-tight">
+                Mulai Pengalaman WebAR Assemblr
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-200 mt-0.5">
-                Pindai marker QR untuk memunculkan model 3D di ruanganmu
+              <p className="text-xs sm:text-sm text-slate-200 max-w-xl leading-relaxed">
+                Buka WebAR di browser smartphone, pilih <strong>Scan Marker</strong> atau <strong>View in 3D</strong>, izinkan akses kamera, lalu arahkan ke marker untuk melihat objek 3D di ruanganmu.
               </p>
             </div>
           </div>
 
-          <div className="hidden xs:flex flex-col items-center justify-center px-4 py-2 rounded-xl bg-hajj-gold text-hajj-navy font-bold text-xs shrink-0 shadow-md">
-            <span>Buka</span>
-            <span>Kamera</span>
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full md:w-auto shrink-0">
+            {/* Tombol Utama: Membuka URL Assemblr Langsung */}
+            <a
+              href={ASSEMBLR_CONFIG.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-400 via-hajj-gold to-amber-500 hover:from-amber-500 hover:to-amber-600 text-hajj-navy font-black text-xs sm:text-sm shadow-lg shadow-amber-400/30 flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
+            >
+              <span>Buka WebAR Assemblr</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+
+            {/* Tombol Alternatif: Pemindai QR Layar Penuh */}
+            <button
+              type="button"
+              onClick={() => setIsScannerOpen(true)}
+              className="w-full sm:w-auto py-3.5 px-4 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              title="Gunakan kamera perangkat untuk memindai QR Code Assemblr"
+            >
+              <QrCode className="w-4 h-4 text-hajj-gold" />
+              <span>Pindai QR Proyek</span>
+            </button>
           </div>
-        </button>
+
+        </div>
       </div>
 
-      {/* Pilihan 6 Rukun Haji Dijadikan 1 Selector Compact dengan Opsi Pengganti */}
+      {/* 3. Pilihan 6 Rukun Haji (Selector Compact & Edukatif) */}
       <div className="relative">
         <div className="bg-white rounded-2xl border border-hajj-border shadow-soft overflow-hidden transition-all">
           
@@ -180,7 +197,7 @@ export const ARPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Area AR (3D WebGL Viewer & Marker Preview Tabs) */}
+      {/* 4. Area AR (Tab 1: 3D WebGL Viewer, Tab 2: Panduan & Marker WebAR) */}
       <div className="space-y-3">
         
         {/* Tab Controls */}
@@ -188,7 +205,7 @@ export const ARPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab('viewer')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'viewer'
                 ? 'bg-hajj-primary text-white shadow-sm'
                 : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
@@ -201,25 +218,28 @@ export const ARPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab('marker')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'marker'
                 ? 'bg-hajj-primary text-white shadow-sm'
                 : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>Lihat Marker AR</span>
+            <span>Petunjuk & Marker WebAR</span>
           </button>
         </div>
 
         {/* Tab 1: Embedded 3D Viewer */}
         {activeTab === 'viewer' && (
-          <ARViewer activeScene={activeScene} />
+          <ARViewer 
+            activeScene={activeScene} 
+            onOpenScanner={() => setIsScannerOpen(true)}
+          />
         )}
 
-        {/* Tab 2: Marker Preview & Instructions */}
+        {/* Tab 2: Marker Preview & Official Usage Instructions */}
         {activeTab === 'marker' && (
-          <div className="bg-white rounded-3xl p-5 sm:p-7 border border-hajj-border shadow-soft space-y-5">
+          <div className="bg-white rounded-3xl p-5 sm:p-7 border border-hajj-border shadow-soft space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
               
               {/* Marker Image Display */}
@@ -227,38 +247,52 @@ export const ARPage: React.FC = () => {
                 <div className="w-full max-w-xs aspect-square rounded-2xl bg-slate-50 p-3 border-2 border-dashed border-hajj-secondary/40 shadow-inner flex items-center justify-center">
                   <img
                     src={mediaAssets.assemblrMarker}
-                    alt="Assemblr Marker"
+                    alt="Assemblr Marker QR Resmi"
                     className="w-full h-full object-contain rounded-xl"
                   />
                 </div>
-                <a
-                  href={mediaAssets.assemblrMarker}
-                  download="assemblr-marker-hajj.png"
-                  className="py-2 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold flex items-center gap-2 transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Unduh File Marker untuk Dicetak</span>
-                </a>
+                <div className="flex flex-col sm:flex-row gap-2 w-full max-w-xs">
+                  <a
+                    href={mediaAssets.assemblrMarker}
+                    download="assemblr-marker-hajj.png"
+                    className="flex-1 py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Unduh Marker</span>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setIsScannerOpen(true)}
+                    className="flex-1 py-2 px-3 rounded-xl bg-hajj-light hover:bg-hajj-primary/15 text-hajj-primary text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  >
+                    <QrCode className="w-3.5 h-3.5" />
+                    <span>Pindai QR</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Instructions */}
-              <div className="md:col-span-7 space-y-3.5">
+              {/* Official 5-Step Instructions */}
+              <div className="md:col-span-7 space-y-4">
                 <div className="space-y-0.5">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200 mb-1">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    <span>Alur Resmi Assemblr WebAR</span>
+                  </div>
                   <h3 className="text-base sm:text-lg font-bold text-hajj-navy">
-                    Petunjuk Memindai Marker Augmented Reality
+                    Petunjuk Penggunaan Augmented Reality (Scan Marker)
                   </h3>
                   <p className="text-xs text-slate-500">
-                    Arahkan kamera ke pola marker geometris hitam-putih di samping
+                    Ikuti 5 langkah mudah berikut untuk memunculkan model 3D di atas marker fisik:
                   </p>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <div className="flex items-start gap-2.5 p-3 rounded-xl bg-hajj-light/60 border border-hajj-border">
                     <span className="w-5 h-5 rounded-full bg-hajj-primary text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                       1
                     </span>
                     <div className="text-xs text-slate-700 leading-relaxed">
-                      <strong>Siapkan Marker:</strong> Buka gambar marker di layar lain atau cetak di kertas.
+                      <strong>Buka Proyek Assemblr:</strong> Tekan tombol <em>"Mulai Pengalaman WebAR Assemblr"</em> untuk membuka tautan resmi di browser smartphone.
                     </div>
                   </div>
 
@@ -267,7 +301,7 @@ export const ARPage: React.FC = () => {
                       2
                     </span>
                     <div className="text-xs text-slate-700 leading-relaxed">
-                      <strong>Pindai QR:</strong> Klik tombol besar <em>"Aktifkan Kamera & Pindai Marker AR"</em> di atas.
+                      <strong>Pilih Scan Marker:</strong> Di halaman Assemblr WebAR, pilih tombol <strong>Scan Marker</strong> (atau pilih <strong>View in 3D</strong> jika ingin melihat model 3D tanpa marker fisik).
                     </div>
                   </div>
 
@@ -276,30 +310,48 @@ export const ARPage: React.FC = () => {
                       3
                     </span>
                     <div className="text-xs text-slate-700 leading-relaxed">
-                      <strong>Web AR Browser:</strong> Nikmati objek 3D di browser smartphone tanpa perlu menginstal aplikasi.
+                      <strong>Izinkan Akses Kamera:</strong> Berikan izin saat browser smartphone meminta izin akses kamera native.
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 p-3 rounded-xl bg-hajj-light/60 border border-hajj-border">
+                    <span className="w-5 h-5 rounded-full bg-hajj-primary text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      4
+                    </span>
+                    <div className="text-xs text-slate-700 leading-relaxed">
+                      <strong>Arahkan Kamera ke Marker:</strong> Arahkan kamera ponselmu ke gambar marker QR Assemblr yang telah dicetak di kertas atau ditampilkan di layar lain.
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 p-3 rounded-xl bg-hajj-light/60 border border-hajj-border">
+                    <span className="w-5 h-5 rounded-full bg-hajj-primary text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      5
+                    </span>
+                    <div className="text-xs text-slate-700 leading-relaxed">
+                      <strong>Tunggu Objek 3D Muncul:</strong> Model 3D ibadah haji akan muncul melayang di atas marker dan dapat kamu kelilingi dari berbagai sudut.
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-1 flex flex-col sm:flex-row gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => setIsScannerOpen(true)}
-                    className="py-2.5 px-5 rounded-xl bg-hajj-primary hover:bg-hajj-navy text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all"
-                  >
-                    <Camera className="w-4 h-4 text-hajj-gold" />
-                    <span>Mulai Pindai Sekarang</span>
-                  </button>
-
+                <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
                   <a
                     href={ASSEMBLR_CONFIG.projectUrl}
                     target="_blank"
-                    rel="noreferrer"
-                    className="py-2.5 px-4 rounded-xl border border-hajj-primary text-hajj-primary hover:bg-hajj-light text-xs font-bold flex items-center justify-center gap-1.5 transition-all"
+                    rel="noopener noreferrer"
+                    className="py-3 px-5 rounded-xl bg-gradient-to-r from-amber-400 via-hajj-gold to-amber-500 hover:from-amber-500 hover:to-amber-600 text-hajj-navy text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
                   >
-                    <span>Buka Web AR Langsung</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Mulai Pengalaman WebAR Sekarang</span>
+                    <ExternalLink className="w-4 h-4" />
                   </a>
+
+                  <button
+                    type="button"
+                    onClick={() => setIsScannerOpen(true)}
+                    className="py-3 px-4 rounded-xl border border-hajj-primary text-hajj-primary hover:bg-hajj-light text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+                  >
+                    <Camera className="w-4 h-4" />
+                    <span>Buka Pemindai QR Layar Penuh</span>
+                  </button>
                 </div>
 
               </div>
@@ -310,10 +362,13 @@ export const ARPage: React.FC = () => {
 
       </div>
 
-      {/* QR Scanner Modal */}
+      {/* 5. Fullscreen QR Scanner Modal with connected target project handler */}
       <QRScannerModal
         isOpen={isScannerOpen}
         onClose={() => setIsScannerOpen(false)}
+        onDetectedTargetProject={(detectedUrl) => {
+          console.log("Proyek Assemblr Terdeteksi:", detectedUrl);
+        }}
       />
 
     </div>

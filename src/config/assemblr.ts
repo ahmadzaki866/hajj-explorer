@@ -1,5 +1,18 @@
 /**
  * Konfigurasi Integrasi Assemblr EDU untuk HAJJ EXPLORER
+ * 
+ * Pusat konfigurasi seluruh tautan WebAR, Embed 3D Viewer, dan metadata scene Assemblr.
+ * 
+ * Alur Kerja WebAR Resmi Assemblr:
+ * 1. Pengguna membuka project URL Assemblr (https://asblr.com/tuM8nge).
+ * 2. Pada halaman Assemblr WebAR, pengguna dapat memilih "View in 3D" atau "Scan Marker".
+ * 3. Jika memilih "Scan Marker", peramban akan meminta izin kamera native.
+ * 4. Pengguna mengarahkan kamera ke QR Marker Assemblr fisik/cetak.
+ * 5. Mesin WebAR Assemblr melacak marker dan memunculkan model 3D di atas marker.
+ * 
+ * Catatan Teknis:
+ * - Iframe Embed (v2.editor.assemblrworld.com) berfungsi sebagai 3D WebGL Viewer di dalam website.
+ * - Marker tracking AR kamera sesungguhnya dijalankan oleh WebAR Assemblr melalui browser.
  */
 
 export interface AssemblrScene {
@@ -15,11 +28,22 @@ export interface AssemblrScene {
 import { getAssetUrl } from './assets';
 
 export const ASSEMBLR_CONFIG = {
+  // ID Proyek Hajj Explorer di Assemblr World
   projectId: "-i2faHfog82cn3rXJP5g",
+
+  // URL Tautan Proyek Utama (Membuka WebAR Resmi di Browser)
   projectUrl: "https://asblr.com/tuM8nge",
+
+  // URL Embed 3D Viewer (Digunakan pada iframe ARViewer di dalam website)
   embedUrl: "https://v2.editor.assemblrworld.com/Embed/-i2faHfog82cn3rXJP5g",
+
+  // URL Cadangan Edu Viewer
   eduViewerUrl: "https://viewer-edu.assemblrworld.com/Embed/-i2faHfog82cn3rXJP5g",
+
+  // Aset Marker QR Resmi Assemblr untuk diunduh / ditampilkan
   markerAsset: getAssetUrl("assets/markers/assemblr-marker.png"),
+
+  // Domain resmi Assemblr yang diizinkan untuk validasi QR Code
   validDomains: [
     "asblr.com",
     "asblr.link",
@@ -29,6 +53,8 @@ export const ASSEMBLR_CONFIG = {
     "v2.editor.assemblrworld.com",
     "viewer-edu.assemblrworld.com"
   ],
+
+  // 6 Rukun Haji dan representasi scene edukatifnya
   scenes: [
     {
       id: 1,
@@ -116,7 +142,7 @@ export function validateAssemblrUrl(scannedUrl: string): {
       };
     }
 
-    // Check if it matches this specific project or slug
+    // Periksa apakah cocok dengan proyek Hajj Explorer ini (slug tuM8nge atau projectId)
     const isTarget = 
       urlToTest.includes("tuM8nge") || 
       urlToTest.includes(ASSEMBLR_CONFIG.projectId) ||
@@ -126,8 +152,8 @@ export function validateAssemblrUrl(scannedUrl: string): {
       isValid: true,
       isTargetProject: isTarget,
       message: isTarget 
-        ? "Proyek Hajj Explorer (6 Scene) Teridentifikasi!" 
-        : "Proyek Assemblr Terdeteksi (Domain Terverifikasi).",
+        ? "Proyek Hajj Explorer (Assemblr WebAR) Terverifikasi!" 
+        : "Tautan Assemblr Terdeteksi (Domain Resmi Terverifikasi).",
       cleanedUrl: urlToTest
     };
   } catch (e) {
