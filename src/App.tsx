@@ -9,7 +9,6 @@ import { ARPage } from './pages/ARPage';
 import { MapPage } from './pages/MapPage';
 import { QuizPage } from './pages/QuizPage';
 import { GuidePage } from './pages/GuidePage';
-import { AboutPage } from './pages/AboutPage';
 import { mediaAssets } from './config/assets';
 
 // Scroll to top helper component
@@ -40,7 +39,6 @@ export const App: React.FC = () => {
             <Route path="/peta" element={<MapPage />} />
             <Route path="/kuis" element={<QuizPage />} />
             <Route path="/panduan" element={<GuidePage />} />
-            <Route path="/tentang" element={<AboutPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>

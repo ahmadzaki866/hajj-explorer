@@ -14,7 +14,6 @@ export const Navbar: React.FC = () => {
     { path: '/peta', label: 'Peta Perjalanan' },
     { path: '/kuis', label: 'Kuis Haji' },
     { path: '/panduan', label: 'Panduan' },
-    { path: '/tentang', label: 'Tentang' },
   ];
 
   const isActive = (path: string) => {
